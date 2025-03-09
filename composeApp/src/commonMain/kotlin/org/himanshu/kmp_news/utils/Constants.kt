@@ -3,7 +3,6 @@ package org.himanshu.kmp_news.utils
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.bookmark
 import kmp_news_app.composeapp.generated.resources.headlines
-import kmp_news_app.composeapp.generated.resources.ic_bookmark_filled
 import kmp_news_app.composeapp.generated.resources.ic_bookmark_outlined
 import kmp_news_app.composeapp.generated.resources.ic_headline
 import kmp_news_app.composeapp.generated.resources.ic_search
