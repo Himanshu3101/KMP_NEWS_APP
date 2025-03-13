@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
+import androidx.navigation.NavHostController
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.setting
 import org.himanshu.kmp_news.ui.navigation.NewsBottomNavigationBar
@@ -20,7 +21,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(){
+fun MainScreen(rootNavController: NavHostController) {
     Scaffold (
         topBar = {
             TopAppBar(

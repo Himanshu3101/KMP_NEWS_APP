@@ -11,6 +11,6 @@ import org.himanshu.kmp_news.ui.MainScreen
 @Preview
 fun App() {
     NewsTheme(true) {
-      MainScreen()
+//      MainScreen()
     }
 }
