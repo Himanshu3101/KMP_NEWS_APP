@@ -8,21 +8,27 @@ import kmp_news_app.composeapp.generated.resources.ic_headline
 import kmp_news_app.composeapp.generated.resources.ic_search
 import kmp_news_app.composeapp.generated.resources.search
 import org.himanshu.kmp_news.ui.navigation.BottomNavigationItem
+import org.himanshu.kmp_news.ui.navigation.MainRouteScreen
+
+enum class Type{
+    Mobile,
+    Desktop
+}
 
 val bottomNavigationItemList = listOf(
     BottomNavigationItem(
         icon = Res.drawable.ic_headline,
         title = Res.string.headlines,
-        route = "headLine"
+        route = MainRouteScreen.Headlines.route
     ),
     BottomNavigationItem(
         icon = Res.drawable.ic_search,
         title = Res.string.search,
-        route = "search"
+        route = MainRouteScreen.Search.route
     ),
     BottomNavigationItem(
         icon = Res.drawable.ic_bookmark_outlined,
         title = Res.string.bookmark,
-        route = "bookmark"
+        route = MainRouteScreen.Bookmark.route
     ),
 )
