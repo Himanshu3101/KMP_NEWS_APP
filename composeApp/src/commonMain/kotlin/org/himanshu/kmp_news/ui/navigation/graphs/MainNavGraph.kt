@@ -21,10 +21,12 @@ fun MainNavGraph(
     paddingValues: PaddingValues
 ){
     NavHost(
-        modifier = Modifier.fillMaxSize().padding(paddingValues),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues),
+        startDestination = MainRouteScreen.Headlines.route,
         navController = homeNavController,
-        route = Graph.MainScreenGraph,
-        startDestination = MainRouteScreen.Headlines.route
+        route = Graph.MainScreenGraph
     ){
         composable(route = MainRouteScreen.Headlines.route){
             HeadlineScree()

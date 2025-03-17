@@ -87,6 +87,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.ui.android)
+    implementation(libs.androidx.annotation.jvm)
     debugImplementation(compose.uiTooling)
 }
 
