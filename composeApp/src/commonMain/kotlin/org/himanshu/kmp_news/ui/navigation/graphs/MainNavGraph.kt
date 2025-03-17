@@ -15,9 +15,10 @@ import org.himanshu.kmp_news.ui.navigation.MainRouteScreen
 import org.himanshu.kmp_news.ui.search.SearchScreen
 
 @Composable
+//manages screens inside the tabbed MainScreen.
 fun MainNavGraph(
     rootNavController : NavHostController,
-    homeNavController : NavHostController,
+    homeNavController : NavHostController,  //controls navigation between:Headlines, Search, Bookmark
     paddingValues: PaddingValues
 ){
     NavHost(
@@ -26,7 +27,7 @@ fun MainNavGraph(
             .padding(paddingValues),
         startDestination = MainRouteScreen.Headlines.route,
         navController = homeNavController,
-        route = Graph.MainScreenGraph
+        route = Graph.MainScreenGraph //nested under MainScreenGraph to organize and scope this section.
     ){
         composable(route = MainRouteScreen.Headlines.route){
             HeadlineScree()

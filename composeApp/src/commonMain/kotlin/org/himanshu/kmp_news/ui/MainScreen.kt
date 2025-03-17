@@ -26,14 +26,14 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
-    rootNavController: NavHostController,
-    homeNavController: NavHostController
+    homeNavController: NavHostController,  // controls tabs (Headlines/Search/Bookmark).  //root-level screens.
+    rootNavController: NavHostController  //controls settings and main screens.  // tab-level navigation inside MainScreen
 ) {
     val navBackStackEntry by homeNavController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
     val topBarTitle by remember(currentRoute) {
-        derivedStateOf {
+        derivedStateOf {    //Creates a state that depends on another state (used for dynamic titles).
             bottomNavigationItemList.find { it.route == currentRoute }?.title
                 ?: bottomNavigationItemList.first().title
 
@@ -72,17 +72,18 @@ fun MainScreen(
                         // avoid building up a large stack of destinations
                         // on the back stack as users select items
                         homeNavController.graph.startDestinationRoute?.let {startDestinationRoute ->
-                            // Pop up to the start destination, clearing the back stack
+
+//                            popUpTo, launchSingleTop, restoreState optimize navigation behavior.
+
+                            // Pops backstack up to a specific screen. Used to avoid infinite back navigation loops.
                             popUpTo(startDestinationRoute) {
                                 // Save the state of popped destinations
                                 saveState = true
                             }
                         }
-
-                        // Configure navigation to avoid multiple instances of the same destination
+                        // Prevents multiple copies of the same screen on top of the stack.
                         launchSingleTop = true
-
-                        // Restore state when re-selecting a previously selected item
+                        // Restores the UI state (like scroll position) when navigating back to the screen
                         restoreState = true
                     }
                 }

@@ -5,7 +5,8 @@ object Graph{
     const val MainScreenGraph = "mainScreenGraph"
 }
 
-sealed class MainRouteScreen(var route: String) {
+
+sealed class MainRouteScreen(var route: String) {     //Gives you type-safe unique identifiers (instead of raw strings).
     object Headlines : MainRouteScreen("headlines")
     object Search : MainRouteScreen("search")
     object Bookmark : MainRouteScreen("bookmark")
