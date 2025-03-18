@@ -8,16 +8,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import org.himanshu.kmp_news.ui.common.ArticleListScreen
 
 @Composable
 fun HeadlineScree() {
-    Box() {
-        Text(
-            "Headline",
-            fontSize = 32.sp,
-            modifier = Modifier.align(Alignment.Center),
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onBackground
-        )
-    }
+    ArticleListScreen()
 }
