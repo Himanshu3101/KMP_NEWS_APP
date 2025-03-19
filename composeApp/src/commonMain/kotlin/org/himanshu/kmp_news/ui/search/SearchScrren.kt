@@ -14,7 +14,7 @@ import org.himanshu.kmp_news.ui.common.ArticleListScreen
 import org.himanshu.kmp_news.ui.common.EmptyContent
 import org.himanshu.kmp_news.ui.common.ShimmerEffect
 import org.himanshu.kmp_news.ui.search.component.SearchBarScreen
-import org.himanshu.kmp_news.utils.articles
+
 
 @Composable
 fun SearchScreen(){
