@@ -6,16 +6,20 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.bookmark
+import kmp_news_app.composeapp.generated.resources.dark_mode
 import kmp_news_app.composeapp.generated.resources.headlines
 import kmp_news_app.composeapp.generated.resources.ic_bookmark_outlined
 import kmp_news_app.composeapp.generated.resources.ic_headline
 import kmp_news_app.composeapp.generated.resources.ic_search
+import kmp_news_app.composeapp.generated.resources.light_mode
 import kmp_news_app.composeapp.generated.resources.search
+import kmp_news_app.composeapp.generated.resources.system_default
 import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.data.model.NewsResponse
 import org.himanshu.kmp_news.data.model.Source
 import org.himanshu.kmp_news.ui.navigation.BottomNavigationItem
 import org.himanshu.kmp_news.ui.navigation.MainRouteScreen
+import org.jetbrains.compose.resources.StringResource
 import kotlin.random.Random
 
 enum class Type{
@@ -41,6 +45,11 @@ val bottomNavigationItemList = listOf(
     ),
 )
 
+enum class Theme(val title:StringResource){
+    SYSTEM_DEFAULT(Res.string.system_default),
+    LIGHT_MODE(Res.string.light_mode),
+    DARK_MODE(Res.string.dark_mode)
+}
 
 //For demo purpose
 val articles: List<Article> = listOf(
