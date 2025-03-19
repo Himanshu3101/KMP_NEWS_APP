@@ -54,6 +54,9 @@ kotlin {
             // Navigation
             implementation(libs.navigation.compose)
 
+            // ViewModel
+            implementation(libs.androidx.lifecycle.viewmodel)
+
             //Coil
             implementation(libs.coil.compose.core)
             implementation(libs.coil.compose)
@@ -98,6 +101,7 @@ android {
 dependencies {
     implementation(libs.androidx.ui.android)
     implementation(libs.androidx.annotation.jvm)
+    implementation(libs.androidx.animation.android)
     debugImplementation(compose.uiTooling)
 }
 
