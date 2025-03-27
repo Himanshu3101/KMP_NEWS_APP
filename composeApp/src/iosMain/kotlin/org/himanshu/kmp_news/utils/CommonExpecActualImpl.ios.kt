@@ -1,7 +1,6 @@
 package org.himanshu.kmp_news.utils
 
 import platform.Foundation.NSUUID
-import platform.Foundation.NSHomeDirectory
 import platform.UIKit.*
 
 actual fun getType(): Type {

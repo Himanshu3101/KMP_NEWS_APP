@@ -14,7 +14,6 @@ import kmp_news_app.composeapp.generated.resources.ic_search
 import kmp_news_app.composeapp.generated.resources.light_mode
 import kmp_news_app.composeapp.generated.resources.search
 import kmp_news_app.composeapp.generated.resources.system_default
-import org.himanshu.kmp_news.BuildKonfig
 import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.data.model.NewsResponse
 import org.himanshu.kmp_news.data.model.Source
