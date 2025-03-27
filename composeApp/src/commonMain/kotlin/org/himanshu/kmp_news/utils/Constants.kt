@@ -14,6 +14,7 @@ import kmp_news_app.composeapp.generated.resources.ic_search
 import kmp_news_app.composeapp.generated.resources.light_mode
 import kmp_news_app.composeapp.generated.resources.search
 import kmp_news_app.composeapp.generated.resources.system_default
+import org.himanshu.kmp_news.BuildKonfig
 import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.data.model.NewsResponse
 import org.himanshu.kmp_news.data.model.Source
@@ -58,7 +59,7 @@ val articles: List<Article> = listOf(
         author = "The author",
         title = "This is the main news title headline. This is the main news title headline.",
         description = "This is the main news description. This is the main news description. This is the main news description",
-        url = "",
+        url = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
         urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
         publishedAt = Random(100).nextInt().toString(),
         content = "What is the content?"
@@ -68,7 +69,7 @@ val articles: List<Article> = listOf(
         author = "The author",
         title = "This is the main news title headline. This is the main news title headline.",
         description = "This is the main news description. This is the main news description. This is the main news description",
-        url = "",
+        url = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
         urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
         publishedAt = Random(100).nextInt().toString(),
         content = "What is the content?"
@@ -78,7 +79,7 @@ val articles: List<Article> = listOf(
         author = "The author",
         title = "This is the main news title headline. This is the main news title headline.",
         description = "This is the main news description. This is the main news description. This is the main news description",
-        url = "",
+        url = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
         urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
         publishedAt = Random(100).nextInt().toString(),
         content = "What is the content?"
@@ -88,7 +89,7 @@ val articles: List<Article> = listOf(
         author = "The author",
         title = "This is the main news title headline. This is the main news title headline.",
         description = "This is the main news description. This is the main news description. This is the main news description",
-        url = "",
+        url = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
         urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
         publishedAt = Random(100).nextInt().toString(),
         content = "What is the content?"

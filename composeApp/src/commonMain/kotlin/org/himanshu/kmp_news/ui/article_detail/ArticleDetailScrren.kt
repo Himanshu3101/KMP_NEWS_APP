@@ -1,6 +1,5 @@
 package org.himanshu.kmp_news.ui.article_detail
 
-import androidx.compose.foundation.MarqueeDefaults.Spacing
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -25,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
@@ -33,11 +33,10 @@ import kmp_news_app.composeapp.generated.resources.ic_bookmark_outlined
 import kmp_news_app.composeapp.generated.resources.ic_browse
 import kmp_news_app.composeapp.generated.resources.logo
 import kmp_news_app.composeapp.generated.resources.news_detail
-//import coil.compose.AsyncImage
 import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.theme.cardMinSize
-import org.himanshu.kmp_news.theme.imageSize
 import org.himanshu.kmp_news.theme.xLargePadding
+import org.himanshu.kmp_news.utils.shareLink
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -47,6 +46,10 @@ fun ArticleDetailScreen(
     navController: NavHostController,
     article: Article
 ) {
+
+    val uriHandler = LocalUriHandler.current
+
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -70,7 +73,7 @@ fun ArticleDetailScreen(
                 },
                 actions = {
                     IconButton(onClick = {
-
+                        shareLink(article.url)
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Share,
@@ -79,7 +82,7 @@ fun ArticleDetailScreen(
                     }
 
                     IconButton(onClick = {
-
+                        uriHandler.openUri(article.url)
                     }) {
                         Icon(
                             painter = painterResource(Res.drawable.ic_browse),
