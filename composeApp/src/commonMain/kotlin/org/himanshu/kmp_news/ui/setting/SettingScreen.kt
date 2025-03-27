@@ -18,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.delete_bookmark
@@ -74,7 +75,10 @@ fun SettingScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(stringResource(Res.string.setting))
+                    Text(stringResource(Res.string.setting),
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onBackground)
                 }, navigationIcon = {
                     IconButton(onClick = {
                         rootNavController.navigateUp()/*popBackStack()*/

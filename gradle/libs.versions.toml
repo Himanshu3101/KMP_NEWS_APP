@@ -23,6 +23,7 @@ coroutines = "1.10.1"
 coil3 = "3.0.0-rc02"
 ktor = "3.0.1"
 animationAndroid = "1.7.8"
+kamel = "1.0.3"
 
 [libraries]
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
@@ -51,6 +52,8 @@ coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3"
 coil-compose-core = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil3" }
 coil-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil3" }
 coil-mp = { module = "io.coil-kt.coil3:coil", version.ref = "coil3" }
+#Instead of coil used Kamel-Image for multi-Platform work with Ktor
+#kamel-image = { module = "media.kamel:kamel-image", version = "kamel" }
 
 #Ktor
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }

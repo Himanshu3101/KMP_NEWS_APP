@@ -12,6 +12,10 @@ sealed class MainRouteScreen(var route: String) {     //Gives you type-safe uniq
     object Bookmark : MainRouteScreen("bookmark")
 }
 
+sealed class NewsRouteScreen(var route: String){
+    object NewsDetail : NewsRouteScreen("newsDetail")
+}
+
 sealed class SettingRouteScreen(var route: String) {
     object Setting : SettingRouteScreen("setting")
 }

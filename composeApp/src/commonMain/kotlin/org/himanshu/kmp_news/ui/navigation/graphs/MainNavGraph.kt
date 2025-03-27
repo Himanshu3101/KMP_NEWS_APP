@@ -30,13 +30,13 @@ fun MainNavGraph(
         route = Graph.MainScreenGraph //nested under MainScreenGraph to organize and scope this section.
     ){
         composable(route = MainRouteScreen.Headlines.route){
-            HeadlineScree()
+            HeadlineScree(rootNavController)
         }
         composable(route = MainRouteScreen.Search.route){
-            SearchScreen()
+            SearchScreen(rootNavController)
         }
         composable(route = MainRouteScreen.Bookmark.route){
-            BookmarkScreen()
+            BookmarkScreen(rootNavController)
         }
     }
 }

@@ -9,6 +9,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import org.himanshu.kmp_news.theme.mediumPadding
 import org.himanshu.kmp_news.ui.common.ArticleListScreen
 import org.himanshu.kmp_news.ui.common.EmptyContent
@@ -17,7 +19,7 @@ import org.himanshu.kmp_news.ui.search.component.SearchBarScreen
 
 
 @Composable
-fun SearchScreen(){
+fun SearchScreen(navController: NavController) {
 
     var searchQuery by rememberSaveable(){
         mutableStateOf("")
@@ -59,7 +61,7 @@ fun SearchScreen(){
                 if(articleList.isEmpty()){
                     EmptyContent("No News")
                 }else {
-                    ArticleListScreen(articleList)
+                    ArticleListScreen(articleList, navController)
                 }
             },
             onError = {

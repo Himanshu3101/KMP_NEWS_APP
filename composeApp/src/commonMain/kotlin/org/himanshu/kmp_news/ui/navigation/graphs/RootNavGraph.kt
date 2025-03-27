@@ -5,9 +5,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.himanshu.kmp_news.ui.MainScreen
+import org.himanshu.kmp_news.ui.article_detail.ArticleDetailScreen
 import org.himanshu.kmp_news.ui.navigation.Graph
+import org.himanshu.kmp_news.ui.navigation.NewsRouteScreen
 import org.himanshu.kmp_news.ui.navigation.SettingRouteScreen
 import org.himanshu.kmp_news.ui.setting.SettingScreen
+import org.himanshu.kmp_news.utils.articles
 
 @Composable
 fun RootNavGraph(){
@@ -27,6 +30,11 @@ fun RootNavGraph(){
                 rootNavController = rootNavController,
                 homeNavController = homeNavController
             )
+        }
+
+        // Details Screen
+        composable(route = NewsRouteScreen.NewsDetail.route) {
+            ArticleDetailScreen(rootNavController, articles[0])
         }
 
         // Settings screen is at the root level

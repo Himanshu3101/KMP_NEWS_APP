@@ -58,10 +58,12 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
 
             //Coil
-            implementation(libs.coil.compose.core)
             implementation(libs.coil.compose)
+            implementation(libs.coil.compose.core)
             implementation(libs.coil.mp)
             implementation(libs.coil.network.ktor3)
+            //kamel
+//            implementation(libs.kamel.image)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
