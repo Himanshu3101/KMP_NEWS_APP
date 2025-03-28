@@ -1,5 +1,7 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import com.codingfeline.buildkonfig.compiler.FieldSpec
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.*
 
 plugins {
@@ -8,16 +10,17 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.buildkonfig)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 kotlin {
-    androidTarget()
-  /*  androidTarget {
+//    androidTarget()
+    androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget.set(JvmTarget.JVM_17)
         }
-    }*/
+    }
 
     jvmToolchain(17)
 
@@ -71,11 +74,28 @@ kotlin {
             implementation(libs.coil.network.ktor3)
             //kamel
 //            implementation(libs.kamel.image)
+
+            // Ktor
+            implementation(libs.ktor.core)
+            implementation(libs.ktor.json)
+            implementation(libs.ktor.logging)
+            implementation(libs.ktor.negotiation)
+            implementation(libs.kotlinx.serialization.json)
+
+
+            //Kermit  for logging
+            implementation(libs.kermit)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
-
+            // ktor
+            implementation(libs.ktor.client.okhttp)
             implementation(libs.kotlinx.coroutines.swing)
+        }
+        iosMain.dependencies {
+
+            // Ktor
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
