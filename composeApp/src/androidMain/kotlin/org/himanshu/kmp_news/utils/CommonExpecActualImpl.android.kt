@@ -2,6 +2,8 @@ package org.himanshu.kmp_news.utils
 
 import android.app.Activity
 import android.content.Intent
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import java.util.UUID
 
 actual fun getType(): Type {
@@ -28,4 +30,14 @@ private var activityProvider : () -> Activity = {
 
 fun setActivityProvider(provider: () -> Activity){
     activityProvider  = provider
+}
+
+actual fun dataStorePrefrences(): DataStore<Preferences> {
+   return AppSetting.getDataStore (
+       producerPath = {
+           activityProvider.invoke().filesDir
+               .resolve(dataStoreFileName)
+               .absolutePath
+       }
+   )
 }

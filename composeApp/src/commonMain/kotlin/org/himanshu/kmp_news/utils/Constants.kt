@@ -22,6 +22,8 @@ import org.himanshu.kmp_news.ui.navigation.MainRouteScreen
 import org.jetbrains.compose.resources.StringResource
 import kotlin.random.Random
 
+const val dataStoreFileName = "setting.preferences_pb"
+
 enum class Type{
     Mobile,
     Desktop

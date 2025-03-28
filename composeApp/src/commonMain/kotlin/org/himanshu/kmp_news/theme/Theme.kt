@@ -6,6 +6,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import org.himanshu.kmp_news.utils.Theme
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -31,19 +32,35 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun NewsTheme(
+    appTheme: String?,
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
 //    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-       /* dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }*/
+    val colorScheme = when (appTheme) {
+        /* dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+             val context = LocalContext.current
+             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+         }*/
+        //This is for changing theme by users
+        Theme.LIGHT_MODE.name -> {
+            LightColorScheme
+        }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        Theme.DARK_MODE.name -> {
+            DarkColorScheme
+        }
+
+        //This is for the System theme
+        else -> {
+            if (darkTheme) {
+                DarkColorScheme
+            } else {
+                LightColorScheme
+            }
+
+        }
     }
 
     MaterialTheme(

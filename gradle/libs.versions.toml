@@ -25,6 +25,7 @@ ktor = "3.0.1"
 animationAndroid = "1.7.8"
 kamel = "1.0.3"
 buildkonfig = "0.15.1"
+androidx-data-store = "1.1.4"
 
 [libraries]
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
@@ -47,6 +48,9 @@ androidx-ui-android = { group = "androidx.compose.ui", name = "ui-android", vers
 #//Navigation
 navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-annotation-jvm = { group = "androidx.annotation", name = "annotation-jvm", version.ref = "annotationJvm" }
+
+#Datastore
+androidx-data-store-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "androidx-data-store" }
 
 #COIL
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }

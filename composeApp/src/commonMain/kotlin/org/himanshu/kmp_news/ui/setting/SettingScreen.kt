@@ -13,6 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -36,8 +37,11 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingScreen(
-    rootNavController: NavHostController
+    rootNavController: NavHostController,
+    settingViewModel: SettingViewModel
 ) {
+
+    val currentTheme by settingViewModel.currentTheme.collectAsState()
 
     var showThemeSelectionDialog by remember {
         mutableStateOf(false)
@@ -60,8 +64,9 @@ fun SettingScreen(
         }
         showThemeSelectionDialog ->{
             ThemeSelectionDialog(
-                currentTheme = Theme.LIGHT_MODE.name,
+                currentTheme = currentTheme?:Theme.DARK_MODE.name,
                 onThemeChange = {
+                    settingViewModel.changeThemeMode(it.name)
                     showThemeSelectionDialog = false
                 },
                 onDismissRequest = {

@@ -61,6 +61,9 @@ kotlin {
             // ViewModel
             implementation(libs.androidx.lifecycle.viewmodel)
 
+            //dataStore
+            implementation(libs.androidx.data.store.core)
+
             //Coil
             implementation(libs.coil.compose)
             implementation(libs.coil.compose.core)

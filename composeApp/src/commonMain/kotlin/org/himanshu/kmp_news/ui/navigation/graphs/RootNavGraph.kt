@@ -10,10 +10,13 @@ import org.himanshu.kmp_news.ui.navigation.Graph
 import org.himanshu.kmp_news.ui.navigation.NewsRouteScreen
 import org.himanshu.kmp_news.ui.navigation.SettingRouteScreen
 import org.himanshu.kmp_news.ui.setting.SettingScreen
+import org.himanshu.kmp_news.ui.setting.SettingViewModel
 import org.himanshu.kmp_news.utils.articles
 
 @Composable
-fun RootNavGraph(){
+fun RootNavGraph(
+    settingViewModel: SettingViewModel
+){
     val rootNavController = rememberNavController()  //Creates a NavController that survives recompositions of a Composable.
 
 //    MainScreen and its navigation stay alive even when you leave for SettingsScreen
@@ -39,7 +42,7 @@ fun RootNavGraph(){
 
         // Settings screen is at the root level
         composable(route = SettingRouteScreen.Setting.route) {
-            SettingScreen(rootNavController)
+            SettingScreen(rootNavController,settingViewModel)
         }
     }
 }
