@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import kotlinx.serialization.json.Json
+import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.ui.MainScreen
 import org.himanshu.kmp_news.ui.article_detail.ArticleDetailScreen
 import org.himanshu.kmp_news.ui.navigation.Graph
@@ -37,7 +39,11 @@ fun RootNavGraph(
 
         // Details Screen
         composable(route = NewsRouteScreen.NewsDetail.route) {
-            ArticleDetailScreen(rootNavController, articles[0])
+            rootNavController.previousBackStackEntry?.savedStateHandle?.get<String>("article")?.let {
+                val article:Article = Json.decodeFromString(it)
+                ArticleDetailScreen(rootNavController, article)
+            }
+
         }
 
         // Settings screen is at the root level

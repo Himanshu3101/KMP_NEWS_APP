@@ -23,6 +23,7 @@ import org.jetbrains.compose.resources.StringResource
 import kotlin.random.Random
 
 const val dataStoreFileName = "setting.preferences_pb"
+const val BASEURL = "https://newsapi.org/v2/"
 
 enum class Type{
     Mobile,
@@ -56,7 +57,7 @@ enum class Theme(val title:StringResource){
 //For demo purpose
 val articles: List<Article> = listOf(
     Article(
-        source = Source("dwa", "My news"),
+        source = Source("My news"),
         author = "The author",
         title = "This is the main news title headline. This is the main news title headline.",
         description = "This is the main news description. This is the main news description. This is the main news description",
@@ -66,7 +67,7 @@ val articles: List<Article> = listOf(
         content = "What is the content?"
     ),
     Article(
-        source = Source("dawdwa", "My news"),
+        source = Source( "My news"),
         author = "The author",
         title = "This is the main news title headline. This is the main news title headline.",
         description = "This is the main news description. This is the main news description. This is the main news description",
@@ -76,7 +77,7 @@ val articles: List<Article> = listOf(
         content = "What is the content?"
     ),
     Article(
-        source = Source("dwakjyk", "My news"),
+        source = Source( "My news"),
         author = "The author",
         title = "This is the main news title headline. This is the main news title headline.",
         description = "This is the main news description. This is the main news description. This is the main news description",
@@ -86,7 +87,7 @@ val articles: List<Article> = listOf(
         content = "What is the content?"
     ),
     Article(
-        source = Source("dwserfewa", "My news"),
+        source = Source( "My news"),
         author = "The author",
         title = "This is the main news title headline. This is the main news title headline.",
         description = "This is the main news description. This is the main news description. This is the main news description",

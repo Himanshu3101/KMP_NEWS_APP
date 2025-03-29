@@ -10,6 +10,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import org.himanshu.kmp_news.data.model.repository.OnlineNewsRepository
 import org.himanshu.kmp_news.theme.mediumPadding
 import org.himanshu.kmp_news.ui.common.ArticleListScreen
 import org.himanshu.kmp_news.ui.common.EmptyContent
@@ -25,7 +26,7 @@ fun SearchScreen(navController: NavController) {
     }
 
     val searchViewModel = viewModel{
-        SearchViewModel()
+        SearchViewModel(OnlineNewsRepository())
     }
 
     val uiState by searchViewModel.newsStateFlow.collectAsState()

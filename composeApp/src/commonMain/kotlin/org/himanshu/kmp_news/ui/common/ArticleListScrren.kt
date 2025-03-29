@@ -8,6 +8,8 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavController
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.theme.xLargePadding
 import org.himanshu.kmp_news.ui.navigation.NewsRouteScreen
@@ -32,7 +34,10 @@ fun ArticleListScreen(articleList: List<Article>, navController: NavController){
             it.publishedAt + getRandomId()
         }){ article ->
             ArticleItem(article, onClick = {
-
+                val articleStr = Json.encodeToString(article)
+                navController.currentBackStackEntry?.savedStateHandle?.apply {
+                    set("article", articleStr)
+                }
                 navController.navigate(NewsRouteScreen.NewsDetail.route)
             })
         }
