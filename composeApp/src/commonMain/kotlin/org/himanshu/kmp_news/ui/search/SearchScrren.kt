@@ -10,12 +10,17 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import kmp_news_app.composeapp.generated.resources.Res
+import kmp_news_app.composeapp.generated.resources.ic_browse
+import kmp_news_app.composeapp.generated.resources.no_news
+import kmp_news_app.composeapp.generated.resources.type_to_search
 import org.himanshu.kmp_news.data.model.repository.OnlineNewsRepository
 import org.himanshu.kmp_news.theme.mediumPadding
 import org.himanshu.kmp_news.ui.common.ArticleListScreen
 import org.himanshu.kmp_news.ui.common.EmptyContent
 import org.himanshu.kmp_news.ui.common.ShimmerEffect
 import org.himanshu.kmp_news.ui.search.component.SearchBarScreen
+import org.jetbrains.compose.resources.stringResource
 
 
 @Composable
@@ -42,7 +47,6 @@ fun SearchScreen(navController: NavController) {
             },
             onSearch = { query ->
                 if(query.isNotEmpty()){
-                    println(query)
                     searchViewModel.searchQueryNews(query)
                 }
             }
@@ -52,20 +56,35 @@ fun SearchScreen(navController: NavController) {
 
         uiState.DisplayResult(
             onIdle = {
-                EmptyContent("Type to Search")
+                EmptyContent(
+                    message = stringResource(Res.string.type_to_search),
+                    icon = Res.drawable.ic_browse,
+                    isOnRetryBtnVisible = false
+                )
             },
             onLoading = {
                 ShimmerEffect()
             },
             onSuccess = { articleList ->
                 if(articleList.isEmpty()){
-                    EmptyContent("No News")
+                    EmptyContent(
+                        message = stringResource(Res.string.no_news),
+                        icon = Res.drawable.ic_browse
+                    )
                 }else {
                     ArticleListScreen(articleList, navController)
                 }
             },
             onError = {
-                EmptyContent(it)
+                EmptyContent(
+                    message = it,
+                    icon = Res.drawable.ic_browse,
+                    onRetryClick = {
+                        if(searchQuery.isNotEmpty()){
+                            searchViewModel.searchQueryNews(searchQuery)
+                        }
+                    }
+                )
             }
         )
     }
