@@ -11,10 +11,16 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.buildkonfig)
     alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
-//    androidTarget()
+
+    sourceSets.commonMain {
+        kotlin.srcDir("build/generated/ksp/metadata")
+    }
+
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
@@ -32,6 +38,8 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            // Required when using NativeSQLiteDriver
+            linkerOpts.add("-lsqlite3")
         }
     }
     
@@ -82,9 +90,13 @@ kotlin {
             implementation(libs.ktor.negotiation)
             implementation(libs.kotlinx.serialization.json)
 
-
             //Kermit  for logging
             implementation(libs.kermit)
+
+            // Room + Sqlite
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.sqlite.bundled)
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -133,6 +145,19 @@ dependencies {
     implementation(libs.androidx.animation.android)
     implementation(libs.androidx.ui.graphics.android)
     debugImplementation(compose.uiTooling)
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
+dependencies{
+    add("kspCommonMainMetadata", libs.androidx.room.compiler)
+}
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
+    if(name != "kspCommonMainKotlinMetadata"){
+        dependsOn("kspCommonMainKotlinMetadata")
+    }
 }
 
 compose.desktop {

@@ -14,6 +14,7 @@ import org.himanshu.kmp_news.ui.common.ArticleListScreen
 import org.himanshu.kmp_news.ui.common.EmptyContent
 import org.himanshu.kmp_news.ui.common.ShimmerEffect
 import org.himanshu.kmp_news.ui.search.BookmarkViewModel
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun BookmarkScreen(navController: NavController){
