@@ -2,7 +2,6 @@ package org.himanshu.kmp_news.ui.common
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -17,8 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.sp
-import coil3.compose.AsyncImagePainter.State.Empty.painter
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.retry
 import org.himanshu.kmp_news.theme.imageSize
@@ -42,22 +39,27 @@ fun EmptyContent(
         Icon(
             modifier = Modifier.size(imageSize),
             painter = painterResource(icon),
-            tint = if(isSystemInDarkTheme()) Color.LightGray else Color.Gray,
+            tint = if(!isSystemInDarkTheme()) Color.LightGray else Color.DarkGray,
             contentDescription = null
         )
+
         Text(
             text = message,
             modifier = Modifier.padding(smallPadding),
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Medium,
             textAlign = TextAlign.Center,
-            color = if(isSystemInDarkTheme()) Color.LightGray else Color.Gray,
+            color = if(!isSystemInDarkTheme()) Color.LightGray else Color.DarkGray,
         )
+
         if(isOnRetryBtnVisible){
             Button(onClick = onRetryClick){
-                Text(text = stringResource(Res.string.retry),
-                    style = MaterialTheme.typography.titleMedium)
+                Text(
+                    text = stringResource(Res.string.retry),
+                    style = MaterialTheme.typography.titleMedium
+                )
             }
         }
     }
+
 }

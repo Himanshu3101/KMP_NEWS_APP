@@ -8,7 +8,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.ic_browse
-import kmp_news_app.composeapp.generated.resources.ic_headline
+import kmp_news_app.composeapp.generated.resources.ic_network_error
 import kmp_news_app.composeapp.generated.resources.no_news
 import org.himanshu.kmp_news.data.model.repository.OnlineNewsRepository
 import org.himanshu.kmp_news.ui.common.ArticleListScreen
@@ -46,8 +46,8 @@ fun HeadlineScree(navController: NavController) {
         },
         onError = {
             EmptyContent(
-                message = stringResource(Res.string.no_news),
-                icon = Res.drawable.ic_browse,
+                message = it,
+                icon =  Res.drawable.ic_network_error,
                 onRetryClick = {
                     headLineViewModel.getHeadline()
                 }

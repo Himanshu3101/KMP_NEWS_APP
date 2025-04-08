@@ -28,6 +28,7 @@ buildkonfig = "0.15.1"
 androidx-data-store = "1.1.4"
 kotlinx-serialization = "1.7.3"
 kermit = "2.0.4"
+uiGraphicsAndroid = "1.7.8"
 
 [libraries]
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
@@ -75,6 +76,7 @@ kermit = {module = "co.touchlab:kermit", version.ref = "kermit"}
 
 
 androidx-animation-android = { group = "androidx.compose.animation", name = "animation-android", version.ref = "animationAndroid" }
+androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version.ref = "uiGraphicsAndroid" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

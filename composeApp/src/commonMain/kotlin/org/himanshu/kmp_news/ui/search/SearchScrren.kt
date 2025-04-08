@@ -12,6 +12,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.ic_browse
+import kmp_news_app.composeapp.generated.resources.ic_network_error
 import kmp_news_app.composeapp.generated.resources.no_news
 import kmp_news_app.composeapp.generated.resources.type_to_search
 import org.himanshu.kmp_news.data.model.repository.OnlineNewsRepository
@@ -46,7 +47,7 @@ fun SearchScreen(navController: NavController) {
                 searchQuery = it
             },
             onSearch = { query ->
-                if(query.isNotEmpty()){
+                if(query.trim().isNotEmpty()){
                     searchViewModel.searchQueryNews(query)
                 }
             }
@@ -78,9 +79,9 @@ fun SearchScreen(navController: NavController) {
             onError = {
                 EmptyContent(
                     message = it,
-                    icon = Res.drawable.ic_browse,
+                    icon = Res.drawable.ic_network_error,
                     onRetryClick = {
-                        if(searchQuery.isNotEmpty()){
+                        if(searchQuery.trim().isNotEmpty()){
                             searchViewModel.searchQueryNews(searchQuery)
                         }
                     }

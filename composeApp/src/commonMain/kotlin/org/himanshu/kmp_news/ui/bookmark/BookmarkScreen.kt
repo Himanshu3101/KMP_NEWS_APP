@@ -14,7 +14,6 @@ import org.himanshu.kmp_news.ui.common.ArticleListScreen
 import org.himanshu.kmp_news.ui.common.EmptyContent
 import org.himanshu.kmp_news.ui.common.ShimmerEffect
 import org.himanshu.kmp_news.ui.search.BookmarkViewModel
-import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun BookmarkScreen(navController: NavController){
@@ -34,9 +33,6 @@ fun BookmarkScreen(navController: NavController){
                 EmptyContent(
                     message = stringResource(Res.string.no_news),
                     icon = Res.drawable.ic_browse,
-                    onRetryClick = {
-
-                    }
                 )
             }else {
                 ArticleListScreen(articleList, navController)
@@ -44,7 +40,7 @@ fun BookmarkScreen(navController: NavController){
         },
         onError = {
             EmptyContent(
-                message = stringResource(Res.string.no_news),
+                message = it,
                 icon = Res.drawable.ic_network_error,
                 onRetryClick = {
 

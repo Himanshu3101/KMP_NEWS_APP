@@ -131,6 +131,7 @@ dependencies {
     implementation(libs.androidx.ui.android)
     implementation(libs.androidx.annotation.jvm)
     implementation(libs.androidx.animation.android)
+    implementation(libs.androidx.ui.graphics.android)
     debugImplementation(compose.uiTooling)
 }
 
