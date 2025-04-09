@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.json.Json
+import org.himanshu.kmp_news.data.database.NewsDao
 import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.ui.MainScreen
 import org.himanshu.kmp_news.ui.article_detail.ArticleDetailScreen
@@ -13,11 +14,11 @@ import org.himanshu.kmp_news.ui.navigation.NewsRouteScreen
 import org.himanshu.kmp_news.ui.navigation.SettingRouteScreen
 import org.himanshu.kmp_news.ui.setting.SettingScreen
 import org.himanshu.kmp_news.ui.setting.SettingViewModel
-import org.himanshu.kmp_news.utils.articles
 
 @Composable
 fun RootNavGraph(
-    settingViewModel: SettingViewModel
+    settingViewModel: SettingViewModel,
+    newsDao: NewsDao
 ){
     val rootNavController = rememberNavController()  //Creates a NavController that survives recompositions of a Composable.
 
@@ -33,7 +34,7 @@ fun RootNavGraph(
         composable(route = Graph.MainScreenGraph) {
             MainScreen(
                 rootNavController = rootNavController,
-                homeNavController = homeNavController
+                newsDao = newsDao,
             )
         }
 
@@ -41,7 +42,7 @@ fun RootNavGraph(
         composable(route = NewsRouteScreen.NewsDetail.route) {
             rootNavController.previousBackStackEntry?.savedStateHandle?.get<String>("article")?.let {
                 val article:Article = Json.decodeFromString(it)
-                ArticleDetailScreen(rootNavController, article)
+                ArticleDetailScreen(rootNavController, article, newsDao)
             }
 
         }

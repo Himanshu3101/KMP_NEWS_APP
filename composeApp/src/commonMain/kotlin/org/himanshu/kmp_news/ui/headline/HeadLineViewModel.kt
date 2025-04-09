@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.data.model.ErrorResponse
 import org.himanshu.kmp_news.data.model.NewsResponse
-import org.himanshu.kmp_news.data.model.repository.OnlineNewsRepository
+import org.himanshu.kmp_news.data.repository.OnlineNewsRepository
 
 
 class HeadLineViewModel(

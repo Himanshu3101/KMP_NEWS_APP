@@ -15,7 +15,7 @@ import kmp_news_app.composeapp.generated.resources.ic_browse
 import kmp_news_app.composeapp.generated.resources.ic_network_error
 import kmp_news_app.composeapp.generated.resources.no_news
 import kmp_news_app.composeapp.generated.resources.type_to_search
-import org.himanshu.kmp_news.data.model.repository.OnlineNewsRepository
+import org.himanshu.kmp_news.data.repository.OnlineNewsRepository
 import org.himanshu.kmp_news.theme.mediumPadding
 import org.himanshu.kmp_news.ui.common.ArticleListScreen
 import org.himanshu.kmp_news.ui.common.EmptyContent

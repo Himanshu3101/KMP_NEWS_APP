@@ -15,8 +15,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.setting
+import org.himanshu.kmp_news.data.database.NewsDao
 import org.himanshu.kmp_news.ui.navigation.NewsBottomNavigationBar
 import org.himanshu.kmp_news.ui.navigation.SettingRouteScreen
 import org.himanshu.kmp_news.ui.navigation.graphs.MainNavGraph
@@ -26,9 +28,11 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
-    homeNavController: NavHostController,  // controls tabs (Headlines/Search/Bookmark).  //root-level screens.
+   newsDao: NewsDao/* homeNavController: NavHostController*/,  // controls tabs (Headlines/Search/Bookmark).  //root-level screens.
     rootNavController: NavHostController  //controls settings and main screens.  // tab-level navigation inside MainScreen
 ) {
+
+    val homeNavController = rememberNavController()
     val navBackStackEntry by homeNavController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
@@ -90,10 +94,11 @@ fun MainScreen(
             )
         }
     ) { innerPadding ->
-        MainNavGraph(
+         MainNavGraph(
             rootNavController = rootNavController,
             homeNavController = homeNavController,
-            paddingValues = innerPadding
+            paddingValues = innerPadding,
+             newsDao = newsDao
         )
     }
 }

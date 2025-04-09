@@ -1,10 +1,14 @@
 package org.himanshu.kmp_news.data.model
 
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
+@Entity(tableName = "articleTable")
 data class Article(
     @SerialName("author")
     val author: String?,
@@ -12,6 +16,8 @@ data class Article(
     val content: String?,
     @SerialName("description")
     val description: String?,
+    @PrimaryKey(autoGenerate = false)
+    @ColumnInfo("articleId")
     @SerialName("publishedAt")
     val publishedAt: String,
     @SerialName("source")

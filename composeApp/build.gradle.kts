@@ -54,6 +54,10 @@ kotlin {
 
             // Ktor
             implementation(libs.ktor.client.android)
+
+            implementation(libs.room.kmp)
+            implementation(libs.androidx.room.runtime.v261)
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -145,6 +149,7 @@ dependencies {
     implementation(libs.androidx.animation.android)
     implementation(libs.androidx.ui.graphics.android)
     debugImplementation(compose.uiTooling)
+    add("kspAndroid", libs.room.kmp.compiler)
 }
 
 room {

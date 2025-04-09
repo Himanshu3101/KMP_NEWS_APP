@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import org.himanshu.kmp_news.data.database.NewsDao
 import org.himanshu.kmp_news.ui.bookmark.BookmarkScreen
 import org.himanshu.kmp_news.ui.headline.HeadlineScree
 import org.himanshu.kmp_news.ui.navigation.Graph
@@ -17,10 +18,12 @@ import org.himanshu.kmp_news.ui.search.SearchScreen
 @Composable
 //manages screens inside the tabbed MainScreen.
 fun MainNavGraph(
-    rootNavController : NavHostController,
-    homeNavController : NavHostController,  //controls navigation between:Headlines, Search, Bookmark
-    paddingValues: PaddingValues
+    rootNavController: NavHostController,
+    homeNavController: NavHostController,  //controls navigation between:Headlines, Search, Bookmark
+    paddingValues: PaddingValues,
+    newsDao: NewsDao
 ){
+
     NavHost(
         modifier = Modifier
             .fillMaxSize()
@@ -36,7 +39,7 @@ fun MainNavGraph(
             SearchScreen(rootNavController)
         }
         composable(route = MainRouteScreen.Bookmark.route){
-            BookmarkScreen(rootNavController)
+            BookmarkScreen(rootNavController, newsDao)
         }
     }
 }

@@ -2,9 +2,13 @@ package org.himanshu.kmp_news.utils
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.room.RoomDatabase
 import kotlinx.cinterop.ExperimentalForeignApi
+import org.himanshu.kmp_news.data.database.NewsDatabase
 import platform.Foundation.*
 import platform.UIKit.*
+import androidx.room.Room
+import data.database.instantiateImpl
 
 actual fun getType(): Type {
     return Type.Mobile
@@ -37,4 +41,12 @@ actual fun dataStorePrefrences(): DataStore<Preferences> {
             )
             requireNotNull(documentDirectory).path + "/$dataStoreFileName"
         })
+}
+
+actual fun getDatabaseBuilder(): RoomDatabase.Builder<NewsDatabase> {
+    val dbFilePath = NSHomeDirectory() + "/$DB_Name"
+    return Room.databaseBuilder<NewsDatabase>(
+        name = dbFilePath,
+        factory = { NewsDatabase::class.instantiateImpl() }
+    )
 }

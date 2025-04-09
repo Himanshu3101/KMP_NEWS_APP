@@ -1,4 +1,4 @@
-package org.himanshu.kmp_news.data.model.repository
+package org.himanshu.kmp_news.data.repository
 
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout

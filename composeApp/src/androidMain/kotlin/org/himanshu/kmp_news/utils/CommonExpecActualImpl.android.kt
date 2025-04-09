@@ -4,7 +4,16 @@ import android.app.Activity
 import android.content.Intent
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.room.RoomDatabaseConstructor
+import org.himanshu.kmp_news.data.database.NewsDatabase
 import java.util.UUID
+
+
+private var activityProvider : () -> Activity = {
+    throw IllegalArgumentException("Activity provider is not set")
+}
 
 actual fun getType(): Type {
     return Type.Mobile
@@ -24,10 +33,6 @@ actual fun shareLink(url:String){
     activityProvider.invoke().startActivity(intentChooser)
 }
 
-private var activityProvider : () -> Activity = {
-    throw IllegalArgumentException("Activity provider is not set")
-}
-
 fun setActivityProvider(provider: () -> Activity){
     activityProvider  = provider
 }
@@ -41,3 +46,13 @@ actual fun dataStorePrefrences(): DataStore<Preferences> {
        }
    )
 }
+
+actual fun getDatabaseBuilder(): RoomDatabase.Builder<NewsDatabase> {
+    val activity = activityProvider.invoke()
+    val dbFile = activity.getDatabasePath(DB_Name)
+    return Room.databaseBuilder<NewsDatabase>(
+        context = activity,
+        name = dbFile.absolutePath
+    )
+}
+
