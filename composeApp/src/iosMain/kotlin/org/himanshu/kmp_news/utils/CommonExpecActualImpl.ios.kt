@@ -8,7 +8,6 @@ import org.himanshu.kmp_news.data.database.*
 import platform.Foundation.*
 import platform.UIKit.*
 import androidx.room.Room
-import androidx.room.RoomDatabaseConstructor
 import data.database.instantiateImpl
 
 actual fun getType(): Type {
