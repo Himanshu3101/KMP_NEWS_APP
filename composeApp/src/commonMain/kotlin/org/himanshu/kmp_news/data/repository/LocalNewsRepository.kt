@@ -10,9 +10,17 @@ class LocalNewsRepository (
     private val newsDao:NewsDao
 ){
 
-    suspend fun upsertArticle(article: Article){
-        newsDao.upsert(article)
+    suspend fun insertArticle(article: Article){
+        newsDao.insert(article)
+    }
+
+    suspend fun deleteBookmark(article: Article){
+        newsDao.deleteBookmark(article)
     }
 
     fun getArticles() = newsDao.getArticle().flowOn(Dispatchers.IO)
+
+    suspend fun getArticleId(articleId:String): Article? {
+        return newsDao.getArticleId(articleId)
+    }
 }

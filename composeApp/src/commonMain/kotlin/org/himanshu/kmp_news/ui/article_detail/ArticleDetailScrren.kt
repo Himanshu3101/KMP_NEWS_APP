@@ -19,6 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -46,14 +47,18 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun ArticleDetailScreen(
     navController: NavHostController,
-    article: Article,
+    currentArticle: Article,
     newsDao: NewsDao
 ) {
 
-    val articleDetailViewModel = viewModel{
+    val articleDetailViewModel = viewModel {
         ArticleDetailViewModel(LocalNewsRepository(newsDao))
     }
     val uriHandler = LocalUriHandler.current
+
+    LaunchedEffect(Unit){
+        articleDetailViewModel.isArticleBookmarked(currentArticle)
+    }
 
 
     Scaffold(
@@ -79,7 +84,7 @@ fun ArticleDetailScreen(
                 },
                 actions = {
                     IconButton(onClick = {
-                        shareLink(article.url)
+                        shareLink(currentArticle.url)
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Share,
@@ -88,7 +93,7 @@ fun ArticleDetailScreen(
                     }
 
                     IconButton(onClick = {
-                        uriHandler.openUri(article.url)
+                        uriHandler.openUri(currentArticle.url)
                     }) {
                         Icon(
                             painter = painterResource(Res.drawable.ic_browse),
@@ -97,10 +102,14 @@ fun ArticleDetailScreen(
                     }
 
                     IconButton(onClick = {
-                        articleDetailViewModel.bookmarkArticle(article)
+                        articleDetailViewModel.bookmarkArticle(currentArticle)
                     }) {
                         Icon(
-                           painter = painterResource(Res.drawable.ic_bookmark_outlined),
+                            painter = painterResource(
+                                if (articleDetailViewModel.isBookMarked)
+                                    Res.drawable.ic_bookmark_filled
+                                else
+                                    Res.drawable.ic_bookmark_outlined),
                             contentDescription = null
                         )
                     }
@@ -108,13 +117,13 @@ fun ArticleDetailScreen(
             )
         }
     ) { innerPadding ->
-        LazyColumn (
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
             contentPadding = PaddingValues(xLargePadding),
             verticalArrangement = Arrangement.spacedBy(xLargePadding)
-        ){
+        ) {
             item {
 
                 AsyncImage(
@@ -123,7 +132,7 @@ fun ArticleDetailScreen(
                         .height(cardMinSize)
                         .clip(MaterialTheme.shapes.large)
                         .background(Color.Gray),
-                    model = article.urlToImage,
+                    model = currentArticle.urlToImage,
                     error = painterResource(Res.drawable.logo),
                     contentScale = ContentScale.Crop,
                     contentDescription = null
@@ -132,14 +141,14 @@ fun ArticleDetailScreen(
 
             item {
                 Text(
-                    text = article.title,
+                    text = currentArticle.title,
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground
                 )
             }
 
-            article.description?.let {
+            currentArticle.description?.let {
                 item {
                     Text(
                         text = it,
@@ -149,7 +158,7 @@ fun ArticleDetailScreen(
                 }
             }
 
-            article.publishedAt.let {
+            currentArticle.publishedAt.let {
                 item {
                     Text(
                         text = it,
