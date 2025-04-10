@@ -9,8 +9,10 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+
     alias(libs.plugins.buildkonfig)
     alias(libs.plugins.kotlinx.serialization)
+
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
 }
@@ -28,7 +30,7 @@ kotlin {
         }
     }
 
-    jvmToolchain(17)
+//    jvmToolchain(17)
 
     listOf(
         iosX64(),
@@ -39,7 +41,7 @@ kotlin {
             baseName = "ComposeApp"
             isStatic = true
             // Required when using NativeSQLiteDriver
-            linkerOpts.add("-lsqlite3")
+//            linkerOpts.add("-lsqlite3")
         }
     }
     
@@ -54,10 +56,6 @@ kotlin {
 
             // Ktor
             implementation(libs.ktor.client.android)
-
-            implementation(libs.room.kmp)
-            implementation(libs.androidx.room.runtime.v261)
-
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -66,41 +64,41 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            //ViewModel
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+            // Room + Sqlite
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.sqlite.bundled)
+//            implementation(libs.koin.core)
+//            implementation(libs.koin.compose.viewmodel)
+//            implementation(libs.koin.compose)
+
+
+
+
+
 
             implementation(compose.material3)
             // Navigation
             implementation(libs.navigation.compose)
-
-            // ViewModel
-            implementation(libs.androidx.lifecycle.viewmodel)
-
-            //dataStore
-            implementation(libs.androidx.data.store.core)
-
             //Coil
             implementation(libs.coil.compose)
             implementation(libs.coil.compose.core)
             implementation(libs.coil.mp)
             implementation(libs.coil.network.ktor3)
-            //kamel
-//            implementation(libs.kamel.image)
-
             // Ktor
             implementation(libs.ktor.core)
             implementation(libs.ktor.json)
             implementation(libs.ktor.logging)
             implementation(libs.ktor.negotiation)
             implementation(libs.kotlinx.serialization.json)
-
             //Kermit  for logging
             implementation(libs.kermit)
-
-            // Room + Sqlite
-            implementation(libs.androidx.room.runtime)
-            implementation(libs.sqlite.bundled)
-
+            //dataStore
+            implementation(libs.androidx.data.store.core)
+            //kamel
+//            implementation(libs.kamel.image)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -112,6 +110,9 @@ kotlin {
 
             // Ktor
             implementation(libs.ktor.client.darwin)
+        }
+        dependencies {
+            ksp(libs.androidx.room.compiler)
         }
     }
 }
@@ -143,27 +144,22 @@ android {
     }
 }
 
-dependencies {
-    implementation(libs.androidx.ui.android)
-    implementation(libs.androidx.annotation.jvm)
-    implementation(libs.androidx.animation.android)
-    implementation(libs.androidx.ui.graphics.android)
-    debugImplementation(compose.uiTooling)
-    add("kspAndroid", libs.room.kmp.compiler)
-}
-
 room {
     schemaDirectory("$projectDir/schemas")
 }
 
-dependencies{
+dependencies {
+    debugImplementation(compose.uiTooling)
+}
+
+/*dependencies{
     add("kspCommonMainMetadata", libs.androidx.room.compiler)
 }
 tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
     if(name != "kspCommonMainKotlinMetadata"){
         dependsOn("kspCommonMainKotlinMetadata")
     }
-}
+}*/
 
 compose.desktop {
     application {
@@ -176,6 +172,14 @@ compose.desktop {
         }
     }
 }
+
+
+
+
+
+
+
+
 
 buildkonfig {
     packageName = "org.himanshu.kmp_news"

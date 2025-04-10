@@ -4,7 +4,8 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import org.himanshu.kmp_news.data.database.NewsDatabase
+import androidx.room.RoomDatabaseConstructor
+import org.himanshu.kmp_news.data.database.*
 import java.awt.Toolkit
 import java.awt.datatransfer.StringSelection
 import java.io.File

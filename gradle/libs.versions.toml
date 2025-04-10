@@ -30,14 +30,14 @@ androidx-data-store = "1.1.4"
 kotlinx-serialization = "1.7.3"
 kermit = "2.0.4"
 uiGraphicsAndroid = "1.7.8"
-androidx-room = "2.7.0-rc03"
+androidx-room = "2.7.0"
 ksp = "2.0.20-1.0.24"
-sqlite = "2.5.0-rc03"
+sqlite = "2.5.0"
 
-room-kmp = "0.6.1"
+
 
 [libraries]
-androidx-room-runtime-v261 = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+#androidx-room-runtime-v261 = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
 
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -90,8 +90,6 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidx-room" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 
-room-kmp = { module = "io.github.xxfast:room", version.ref = "room-kmp" }
-room-kmp-compiler = { module = "io.github.xxfast:room-compiler", version.ref = "room-kmp" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -103,3 +101,5 @@ buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig"
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "androidx-room" }
+sqlDelight = {id = "com.squareup.sqldelight", version.ref = "sqlite"}
+

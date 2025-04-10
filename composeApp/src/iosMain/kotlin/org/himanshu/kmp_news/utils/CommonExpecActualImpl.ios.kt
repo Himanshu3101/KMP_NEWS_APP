@@ -4,10 +4,11 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.room.RoomDatabase
 import kotlinx.cinterop.ExperimentalForeignApi
-import org.himanshu.kmp_news.data.database.NewsDatabase
+import org.himanshu.kmp_news.data.database.*
 import platform.Foundation.*
 import platform.UIKit.*
 import androidx.room.Room
+import androidx.room.RoomDatabaseConstructor
 import data.database.instantiateImpl
 
 actual fun getType(): Type {
