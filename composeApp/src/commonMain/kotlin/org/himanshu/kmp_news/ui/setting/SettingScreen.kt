@@ -22,7 +22,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import co.touchlab.kermit.Logger
-import co.touchlab.kermit.Tag
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.delete_bookmark
 import kmp_news_app.composeapp.generated.resources.ic_delete

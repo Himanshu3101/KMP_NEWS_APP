@@ -1,12 +1,8 @@
 package org.himanshu.kmp_news.ui.navigation.graphs
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.json.Json
 import org.himanshu.kmp_news.data.database.NewsDao
@@ -18,7 +14,6 @@ import org.himanshu.kmp_news.ui.navigation.NewsRouteScreen
 import org.himanshu.kmp_news.ui.navigation.SettingRouteScreen
 import org.himanshu.kmp_news.ui.setting.SettingScreen
 import org.himanshu.kmp_news.ui.setting.SettingViewModel
-import org.himanshu.kmp_news.utils.bottomNavigationItemList
 
 @Composable
 fun RootNavGraph(
