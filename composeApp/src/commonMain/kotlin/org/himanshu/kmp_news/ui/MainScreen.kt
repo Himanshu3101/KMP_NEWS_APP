@@ -29,10 +29,11 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun MainScreen(
    newsDao: NewsDao/* homeNavController: NavHostController*/,  // controls tabs (Headlines/Search/Bookmark).  //root-level screens.
-    rootNavController: NavHostController  //controls settings and main screens.  // tab-level navigation inside MainScreen
+    rootNavController: NavHostController,  //controls settings and main screens.  // tab-level navigation inside MainScreen
+   homeNavController: NavHostController
 ) {
 
-    val homeNavController = rememberNavController()
+
     val navBackStackEntry by homeNavController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 

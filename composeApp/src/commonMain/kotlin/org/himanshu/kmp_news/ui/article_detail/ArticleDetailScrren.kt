@@ -30,6 +30,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
 import kmp_news_app.composeapp.generated.resources.Res
+import kmp_news_app.composeapp.generated.resources.ic_bookmark_filled
 import kmp_news_app.composeapp.generated.resources.ic_bookmark_outlined
 import kmp_news_app.composeapp.generated.resources.ic_browse
 import kmp_news_app.composeapp.generated.resources.logo

@@ -10,10 +10,13 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import org.himanshu.kmp_news.data.repository.LocalNewsRepository
 
 class SettingViewModel (
-    private val appPreferences: AppPreferences
+    private val appPreferences: AppPreferences,
+    private val localNewsRepository: LocalNewsRepository
 ) : ViewModel(){
+
     private val _currentTheme: MutableStateFlow<String?> = MutableStateFlow(null)
     val currentTheme = _currentTheme.asStateFlow()
 
@@ -21,6 +24,11 @@ class SettingViewModel (
         currentThemeGet()
     }
 
+    fun deleteAllBookmark(){
+        viewModelScope.launch { Dispatchers.IO
+            localNewsRepository.deleteAllAarticle()
+        }
+    }
 
     //runBlocking used when you need to wait for a coroutine to finish its execution synchronously.
     //bcoz dataStore are slow bcoz it used flow

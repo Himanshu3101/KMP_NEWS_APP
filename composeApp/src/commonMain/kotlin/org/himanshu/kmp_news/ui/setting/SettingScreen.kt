@@ -21,6 +21,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
+import co.touchlab.kermit.Logger
+import co.touchlab.kermit.Tag
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.delete_bookmark
 import kmp_news_app.composeapp.generated.resources.ic_delete
@@ -37,11 +39,12 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingScreen(
-    rootNavController: NavHostController,
+    navController: NavHostController,
     settingViewModel: SettingViewModel
 ) {
 
     val currentTheme by settingViewModel.currentTheme.collectAsState()
+
 
     var showThemeSelectionDialog by remember {
         mutableStateOf(false)
@@ -51,20 +54,22 @@ fun SettingScreen(
         mutableStateOf(false)
     }
 
-    when{
-        showDeleteBookmarkDialog ->{
+    when {
+        showDeleteBookmarkDialog -> {
             DeleteBookmarkDialog(
                 onDismissRequest = {
                     showDeleteBookmarkDialog = false
                 },
                 onDeleteBookmark = {
+                    settingViewModel.deleteAllBookmark()
                     showDeleteBookmarkDialog = false
                 }
             )
         }
-        showThemeSelectionDialog ->{
+
+        showThemeSelectionDialog -> {
             ThemeSelectionDialog(
-                currentTheme = currentTheme?:Theme.DARK_MODE.name,
+                currentTheme = currentTheme ?: Theme.DARK_MODE.name,
                 onThemeChange = {
                     settingViewModel.changeThemeMode(it.name)
                     showThemeSelectionDialog = false
@@ -80,13 +85,22 @@ fun SettingScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(stringResource(Res.string.setting),
+                    Text(
+                        stringResource(Res.string.setting),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onBackground)
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
                 }, navigationIcon = {
                     IconButton(onClick = {
-                        rootNavController.navigateUp()/*popBackStack()*/
+                       /* navController.navigateUp()*/
+
+                        if (navController.previousBackStackEntry != null) {
+                            navController.popBackStack()
+                        } else {
+                            Logger.withTag("Navigation").w { "No backstack entry. Consider closing the window or navigating to a safe screen." }
+                        }
+
                     }) {
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack,
@@ -96,10 +110,10 @@ fun SettingScreen(
                 }
             )
         }
-    ) {paddingValues->
-        LazyColumn (
+    ) { paddingValues ->
+        LazyColumn(
             modifier = Modifier.fillMaxSize().padding(paddingValues)
-        ){
+        ) {
             item {
                 SettingItem(
                     onClick = {
@@ -124,21 +138,19 @@ fun SettingScreen(
     }
 
 
+    /* Box(Modifier.fillMaxSize()) {
+         Button(onClick = {
+             rootNavController.popBackStack()  // go back
+         }) {
+             Text("Back")
+         }
+         Text(
+             "Setting Screen",
+             fontSize = 32.sp,
+             modifier = Modifier.align(Alignment.Center),
+             fontWeight = FontWeight.Bold,
+             color = MaterialTheme.colorScheme.onBackground
+         )
 
-
-   /* Box(Modifier.fillMaxSize()) {
-        Button(onClick = {
-            rootNavController.popBackStack()  // go back
-        }) {
-            Text("Back")
-        }
-        Text(
-            "Setting Screen",
-            fontSize = 32.sp,
-            modifier = Modifier.align(Alignment.Center),
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onBackground
-        )
-
-    }*/
+     }*/
 }

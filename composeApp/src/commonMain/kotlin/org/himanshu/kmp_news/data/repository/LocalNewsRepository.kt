@@ -18,6 +18,10 @@ class LocalNewsRepository (
         newsDao.deleteBookmark(article)
     }
 
+    suspend fun deleteAllAarticle(){
+        newsDao.deleteAllArticle()
+    }
+
     fun getArticles() = newsDao.getArticle().flowOn(Dispatchers.IO)
 
     suspend fun getArticleId(articleId:String): Article? {

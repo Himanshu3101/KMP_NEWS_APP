@@ -21,4 +21,8 @@ interface NewsDao {
 
     @Delete
     suspend fun deleteBookmark(article: Article)
+
+    @Query("Delete from articleTable")
+    suspend fun deleteAllArticle()
+
 }
