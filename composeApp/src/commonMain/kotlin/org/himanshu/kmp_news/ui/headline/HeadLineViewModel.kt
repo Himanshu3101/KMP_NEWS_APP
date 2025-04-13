@@ -1,5 +1,9 @@
 package org.himanshu.kmp_news.ui.search
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.ktor.client.call.body
@@ -13,6 +17,7 @@ import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.data.model.ErrorResponse
 import org.himanshu.kmp_news.data.model.NewsResponse
 import org.himanshu.kmp_news.data.repository.OnlineNewsRepository
+import org.himanshu.kmp_news.utils.categoryList
 
 
 class HeadLineViewModel(
@@ -22,15 +27,17 @@ class HeadLineViewModel(
     private val _newsStateFlow = MutableStateFlow<Resource<List<Article>>>(Resource.Loading)
     val newsStateFlow: StateFlow<Resource<List<Article>>> = _newsStateFlow
 
+    var category by mutableStateOf(categoryList[0])
+
     init {
-        getHeadline()
+        getHeadline(category)
     }
 
-    fun getHeadline() {
+    fun getHeadline(category: String) {
         viewModelScope.launch(Dispatchers.IO) {
             _newsStateFlow.emit(Resource.Loading)
             try {
-                val httpResponse = onLineNewsRepository.getNews()
+                val httpResponse = onLineNewsRepository.getNews(category)
                 if (httpResponse.status.value in 200..299) {
                     val body = httpResponse.body<NewsResponse>()
                     _newsStateFlow.emit(Resource.Success(body.articles))

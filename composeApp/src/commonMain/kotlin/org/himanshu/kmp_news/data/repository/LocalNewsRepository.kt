@@ -9,7 +9,6 @@ import org.himanshu.kmp_news.data.model.Article
 class LocalNewsRepository (
     private val newsDao:NewsDao
 ){
-
     suspend fun insertArticle(article: Article){
         newsDao.insert(article)
     }
@@ -27,4 +26,8 @@ class LocalNewsRepository (
     suspend fun getArticleId(articleId:String): Article? {
         return newsDao.getArticleId(articleId)
     }
+
+    /*suspend fun deleteAllArticle(){
+        newsDao.deleteAllArticles()
+    }*/
 }

@@ -25,6 +25,17 @@ import kotlin.random.Random
 const val dataStoreFileName = "setting.preferences_pb"
 const val BASEURL = "https://newsapi.org/v2/"
 const val DB_Name = "NewsDB"
+
+val categoryList = arrayListOf(
+    "Business",
+    "Entertainment",
+    "General",
+    "Health",
+    "Science",
+    "Sports",
+    "Technology"
+)
+
 enum class Type{
     Mobile,
     Desktop

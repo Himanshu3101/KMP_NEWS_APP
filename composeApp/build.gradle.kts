@@ -150,16 +150,9 @@ room {
 
 dependencies {
     debugImplementation(compose.uiTooling)
+  /*  add("kspAndroid", libs.androidx.room.compiler)
+    add("kspDesktop", libs.androidx.room.compiler)*/
 }
-
-/*dependencies{
-    add("kspCommonMainMetadata", libs.androidx.room.compiler)
-}
-tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
-    if(name != "kspCommonMainKotlinMetadata"){
-        dependsOn("kspCommonMainKotlinMetadata")
-    }
-}*/
 
 compose.desktop {
     application {

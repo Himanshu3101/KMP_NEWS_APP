@@ -31,7 +31,7 @@ kotlinx-serialization = "1.7.3"
 kermit = "2.0.4"
 uiGraphicsAndroid = "1.7.8"
 androidx-room = "2.7.0"
-ksp = "2.0.20-1.0.24"
+ksp = "2.0.20-1.0.25"
 sqlite = "2.5.0"
 
 

@@ -9,6 +9,7 @@ import platform.Foundation.*
 import platform.UIKit.*
 import androidx.room.Room
 import data.database.instantiateImpl
+import kotlinx.coroutines.Dispatchers
 
 actual fun getType(): Type {
     return Type.Mobile

@@ -16,7 +16,6 @@ class SettingViewModel (
     private val appPreferences: AppPreferences,
     private val localNewsRepository: LocalNewsRepository
 ) : ViewModel(){
-
     private val _currentTheme: MutableStateFlow<String?> = MutableStateFlow(null)
     val currentTheme = _currentTheme.asStateFlow()
 
