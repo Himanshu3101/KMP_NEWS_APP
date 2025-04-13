@@ -56,6 +56,10 @@ kotlin {
 
             // Ktor
             implementation(libs.ktor.client.android)
+
+            // Koin
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -70,14 +74,6 @@ kotlin {
             // Room + Sqlite
             implementation(libs.androidx.room.runtime)
             implementation(libs.sqlite.bundled)
-//            implementation(libs.koin.core)
-//            implementation(libs.koin.compose.viewmodel)
-//            implementation(libs.koin.compose)
-
-
-
-
-
 
             implementation(compose.material3)
             // Navigation
@@ -99,6 +95,11 @@ kotlin {
             implementation(libs.androidx.data.store.core)
             //kamel
 //            implementation(libs.kamel.image)
+
+            // Koin
+            api(libs.koin.core)
+            implementation(libs.koin.compose)
+//            implementation(libs.koin.composeVM)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
