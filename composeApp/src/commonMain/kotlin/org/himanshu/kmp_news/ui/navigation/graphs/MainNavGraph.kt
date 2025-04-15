@@ -8,7 +8,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import org.himanshu.kmp_news.data.database.NewsDao
 import org.himanshu.kmp_news.ui.bookmark.BookmarkScreen
 import org.himanshu.kmp_news.ui.headline.HeadlineScree
 import org.himanshu.kmp_news.ui.navigation.Graph
