@@ -14,27 +14,23 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.ic_browse
 import kmp_news_app.composeapp.generated.resources.ic_network_error
 import kmp_news_app.composeapp.generated.resources.no_news
-import org.himanshu.kmp_news.data.repository.OnlineNewsRepository
+import org.himanshu.kmp_news.di.koinViewModel
 import org.himanshu.kmp_news.theme.xSmallPadding
 import org.himanshu.kmp_news.ui.common.ArticleListScreen
 import org.himanshu.kmp_news.ui.common.EmptyContent
 import org.himanshu.kmp_news.ui.common.ShimmerEffect
-import org.himanshu.kmp_news.ui.search.HeadLineViewModel
 import org.himanshu.kmp_news.utils.categoryList
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun HeadlineScree(navController: NavController) {
 
-    val headLineViewModel = viewModel {
-        HeadLineViewModel(OnlineNewsRepository())
-    }
+    val headLineViewModel = koinViewModel<HeadLineViewModel>()
 
     val uiState by headLineViewModel.newsStateFlow.collectAsState()
 

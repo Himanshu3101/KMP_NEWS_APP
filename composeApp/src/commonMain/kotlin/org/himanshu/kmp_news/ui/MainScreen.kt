@@ -17,7 +17,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.setting
-import org.himanshu.kmp_news.data.database.NewsDao
 import org.himanshu.kmp_news.ui.navigation.NewsBottomNavigationBar
 import org.himanshu.kmp_news.ui.navigation.SettingRouteScreen
 import org.himanshu.kmp_news.ui.navigation.graphs.MainNavGraph
@@ -27,7 +26,7 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
-   newsDao: NewsDao/* homeNavController: NavHostController*/,  // controls tabs (Headlines/Search/Bookmark).  //root-level screens.
+   /*newsDao: NewsDao*//* homeNavController: NavHostController,*/  // controls tabs (Headlines/Search/Bookmark).  //root-level screens.
     rootNavController: NavHostController,  //controls settings and main screens.  // tab-level navigation inside MainScreen
    homeNavController: NavHostController
 ) {
@@ -97,8 +96,7 @@ fun MainScreen(
          MainNavGraph(
             rootNavController = rootNavController,
             homeNavController = homeNavController,
-            paddingValues = innerPadding,
-             newsDao = newsDao
+            paddingValues = innerPadding
         )
     }
 }

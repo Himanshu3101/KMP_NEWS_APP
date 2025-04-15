@@ -17,8 +17,7 @@ import org.himanshu.kmp_news.ui.setting.SettingViewModel
 
 @Composable
 fun RootNavGraph(
-    settingViewModel: SettingViewModel,
-    newsDao: NewsDao
+    settingViewModel: SettingViewModel
 ){
     val rootNavController = rememberNavController()  //Creates a NavController that survives recompositions of a Composable.
 
@@ -34,8 +33,7 @@ fun RootNavGraph(
         composable(route = Graph.MainScreenGraph) {
             MainScreen(
                 rootNavController = rootNavController,
-                homeNavController = homeNavController,
-                newsDao = newsDao,
+                homeNavController = homeNavController
             )
         }
 
@@ -43,7 +41,7 @@ fun RootNavGraph(
         composable(route = NewsRouteScreen.NewsDetail.route) {
             rootNavController.previousBackStackEntry?.savedStateHandle?.get<String>("article")?.let {
                 val article:Article = Json.decodeFromString(it)
-                ArticleDetailScreen(rootNavController, article, newsDao)
+                ArticleDetailScreen(rootNavController, article)
             }
 
         }

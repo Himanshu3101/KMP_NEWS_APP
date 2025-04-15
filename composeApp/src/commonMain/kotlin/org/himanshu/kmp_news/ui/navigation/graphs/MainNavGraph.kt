@@ -20,8 +20,7 @@ import org.himanshu.kmp_news.ui.search.SearchScreen
 fun MainNavGraph(
     rootNavController: NavHostController,
     homeNavController: NavHostController,  //controls navigation between:Headlines, Search, Bookmark
-    paddingValues: PaddingValues,
-    newsDao: NewsDao
+    paddingValues: PaddingValues
 ){
 
     NavHost(
@@ -39,7 +38,7 @@ fun MainNavGraph(
             SearchScreen(rootNavController)
         }
         composable(route = MainRouteScreen.Bookmark.route){
-            BookmarkScreen(rootNavController, newsDao)
+            BookmarkScreen(rootNavController)
         }
     }
 }

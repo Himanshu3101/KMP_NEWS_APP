@@ -20,13 +20,13 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
 import kmp_news_app.composeapp.generated.resources.Res
@@ -35,9 +35,9 @@ import kmp_news_app.composeapp.generated.resources.ic_bookmark_outlined
 import kmp_news_app.composeapp.generated.resources.ic_browse
 import kmp_news_app.composeapp.generated.resources.logo
 import kmp_news_app.composeapp.generated.resources.news_detail
-import org.himanshu.kmp_news.data.database.NewsDao
+import kotlinx.coroutines.launch
 import org.himanshu.kmp_news.data.model.Article
-import org.himanshu.kmp_news.data.repository.LocalNewsRepository
+import org.himanshu.kmp_news.di.koinViewModel
 import org.himanshu.kmp_news.theme.cardMinSize
 import org.himanshu.kmp_news.theme.xLargePadding
 import org.himanshu.kmp_news.utils.shareLink
@@ -48,19 +48,20 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun ArticleDetailScreen(
     navController: NavHostController,
-    currentArticle: Article,
-    newsDao: NewsDao
+    currentArticle: Article
 ) {
 
-    val articleDetailViewModel = viewModel {
-        ArticleDetailViewModel(LocalNewsRepository(newsDao))
-    }
-    val uriHandler = LocalUriHandler.current
+    val articleDetailViewModel = koinViewModel<ArticleDetailViewModel>()
+
+    val remembeScope = rememberCoroutineScope()
 
     LaunchedEffect(Unit){
+
         articleDetailViewModel.isArticleBookmarked(currentArticle)
     }
 
+
+    val uriHandler = LocalUriHandler.current
 
     Scaffold(
         topBar = {
@@ -103,7 +104,9 @@ fun ArticleDetailScreen(
                     }
 
                     IconButton(onClick = {
-                        articleDetailViewModel.bookmarkArticle(currentArticle)
+                        remembeScope.launch {
+                            articleDetailViewModel.bookmarkArticle(currentArticle)
+                        }
                     }) {
                         Icon(
                             painter = painterResource(

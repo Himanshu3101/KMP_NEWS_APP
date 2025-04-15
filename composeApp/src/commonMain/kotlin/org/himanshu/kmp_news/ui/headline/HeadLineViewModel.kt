@@ -1,4 +1,4 @@
-package org.himanshu.kmp_news.ui.search
+package org.himanshu.kmp_news.ui.headline
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Source(
     @SerialName("name")
-    val name: String
+    val name: String? = "" //when data receive null
 )
