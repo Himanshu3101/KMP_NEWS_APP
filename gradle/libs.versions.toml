@@ -3,10 +3,10 @@ agp = "8.5.2"
 android-compileSdk = "34"
 android-minSdk = "24"
 android-targetSdk = "34"
-androidx-activityCompose = "1.9.3"
+androidx-activityCompose = "1.10.1"
 androidx-appcompat = "1.7.0"
-androidx-constraintlayout = "2.2.0"
-androidx-core-ktx = "1.15.0"
+androidx-constraintlayout = "2.2.1"
+androidx-core-ktx = "1.16.0"
 androidx-espresso-core = "3.6.1"
 lifecycleViewmodel = "2.8.4"
 androidx-material = "1.12.0"
@@ -35,6 +35,7 @@ ksp = "2.0.20-1.0.25"
 sqlite = "2.5.0"
 koin = "4.0.0"
 material3Android = "1.3.2"
+size = "0.5.0"
 
 
 [libraries]
@@ -100,6 +101,7 @@ koin-composeVM = { module = "io.insert-koin:koin-compose-viewmodel", version.ref
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
 
+screen-size = { module = "dev.chrisbanes.material3:material3-window-size-class-multiplatform", version.ref = "size" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

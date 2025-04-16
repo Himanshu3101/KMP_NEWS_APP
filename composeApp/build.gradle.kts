@@ -100,6 +100,9 @@ kotlin {
             api(libs.koin.core)
             implementation(libs.koin.compose)
 //            implementation(libs.koin.composeVM)
+
+            // window-size
+            implementation(libs.screen.size)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
