@@ -1,6 +1,8 @@
 package org.himanshu.kmp_news.ui.navigation.graphs
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -16,25 +18,16 @@ import org.himanshu.kmp_news.ui.setting.SettingViewModel
 
 @Composable
 fun RootNavGraph(
+    rootNavController: NavHostController,
+    innerPaddingValues: PaddingValues,
     settingViewModel: SettingViewModel
 ){
-    val rootNavController = rememberNavController()  //Creates a NavController that survives recompositions of a Composable.
-
-//    MainScreen and its navigation stay alive even when you leave for SettingsScreen
-    val homeNavController = rememberNavController() // hoisted here! Without hoisting, it resets every time you come back.
-
     NavHost(
         navController = rootNavController,
         route = Graph.RootScreenGraph,
         startDestination = Graph.MainScreenGraph
     ){
-        // MainScreenGraph holds headlines/search/bookmark
-        composable(route = Graph.MainScreenGraph) {
-            MainScreen(
-                rootNavController = rootNavController,
-                homeNavController = homeNavController
-            )
-        }
+        mainNavGraph(rootNavController, innerPaddingValues)
 
         // Details Screen
         composable(route = NewsRouteScreen.NewsDetail.route) {

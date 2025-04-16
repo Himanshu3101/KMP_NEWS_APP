@@ -1,6 +1,6 @@
 package org.himanshu.kmp_news.di
 
-import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 import org.himanshu.kmp_news.ui.article_detail.ArticleDetailViewModel
 import org.himanshu.kmp_news.ui.bookmark.BookmarkViewModel
@@ -9,12 +9,10 @@ import org.himanshu.kmp_news.ui.headline.HeadLineViewModel
 import org.himanshu.kmp_news.ui.setting.SettingViewModel
 
 
-
 actual val viewModelModule = module{
-
-    singleOf(::HeadLineViewModel)
-    singleOf(::SearchViewModel)
-    singleOf(::BookmarkViewModel)
-    singleOf(::ArticleDetailViewModel)
-    singleOf(::SettingViewModel)
+    factoryOf(::HeadLineViewModel)
+    factoryOf(::SearchViewModel)
+    factoryOf(::BookmarkViewModel)
+    factoryOf(::ArticleDetailViewModel)
+    factoryOf(::SettingViewModel)
 }

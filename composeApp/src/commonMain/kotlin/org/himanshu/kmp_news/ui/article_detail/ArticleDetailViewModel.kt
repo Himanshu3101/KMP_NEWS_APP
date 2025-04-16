@@ -4,6 +4,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.launch
 import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.data.repository.LocalNewsRepository
 
@@ -13,18 +17,21 @@ class ArticleDetailViewModel(
 
     var isBookMarked by mutableStateOf(false)
 
-    suspend fun isArticleBookmarked(currentArticleId: Article) {
-        isBookMarked = localNewsRepository.getArticleId(currentArticleId.publishedAt) != null
+    fun isArticleBookmarked(currentArticleId: Article) {
+        viewModelScope.launch(Dispatchers.IO) {
+            isBookMarked = localNewsRepository.getArticleId(currentArticleId.publishedAt) != null
+        }
     }
 
-    suspend fun bookmarkArticle(currentArticle: Article) {
-        if (!isBookMarked) {
-            localNewsRepository.insertArticle(currentArticle)
-        } else {
-            localNewsRepository.deleteBookmark(currentArticle)
+    fun bookmarkArticle(currentArticle: Article) {
+        viewModelScope.launch(Dispatchers.IO) {
+            if (!isBookMarked) {
+                localNewsRepository.insertArticle(currentArticle)
+            } else {
+                localNewsRepository.deleteBookmark(currentArticle)
+            }
+            isBookMarked = !isBookMarked
         }
-        isBookMarked = !isBookMarked
-
     }
 
 }

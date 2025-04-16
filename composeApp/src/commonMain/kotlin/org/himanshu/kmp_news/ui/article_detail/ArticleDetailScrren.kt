@@ -20,7 +20,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -35,7 +34,6 @@ import kmp_news_app.composeapp.generated.resources.ic_bookmark_outlined
 import kmp_news_app.composeapp.generated.resources.ic_browse
 import kmp_news_app.composeapp.generated.resources.logo
 import kmp_news_app.composeapp.generated.resources.news_detail
-import kotlinx.coroutines.launch
 import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.di.koinViewModel
 import org.himanshu.kmp_news.theme.cardMinSize
@@ -52,8 +50,6 @@ fun ArticleDetailScreen(
 ) {
 
     val articleDetailViewModel = koinViewModel<ArticleDetailViewModel>()
-
-    val remembeScope = rememberCoroutineScope()
 
     LaunchedEffect(Unit){
 
@@ -104,9 +100,7 @@ fun ArticleDetailScreen(
                     }
 
                     IconButton(onClick = {
-                        remembeScope.launch {
                             articleDetailViewModel.bookmarkArticle(currentArticle)
-                        }
                     }) {
                         Icon(
                             painter = painterResource(

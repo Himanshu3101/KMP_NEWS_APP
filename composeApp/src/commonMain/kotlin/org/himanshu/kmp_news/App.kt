@@ -5,7 +5,7 @@ import org.himanshu.kmp_news.di.koinViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import org.himanshu.kmp_news.theme.NewsTheme
-import org.himanshu.kmp_news.ui.navigation.graphs.RootNavGraph
+import org.himanshu.kmp_news.ui.MainScreen
 import org.himanshu.kmp_news.ui.setting.SettingViewModel
 
 
@@ -17,6 +17,6 @@ fun App() {
     val currentTheme by settingViewModel.currentTheme.collectAsState()
 
     NewsTheme(currentTheme) {
-        RootNavGraph(settingViewModel)
+        MainScreen(settingViewModel)
     }
 }
