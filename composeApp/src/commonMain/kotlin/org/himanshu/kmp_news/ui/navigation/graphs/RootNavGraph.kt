@@ -5,10 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.json.Json
 import org.himanshu.kmp_news.data.model.Article
-import org.himanshu.kmp_news.ui.MainScreen
 import org.himanshu.kmp_news.ui.article_detail.ArticleDetailScreen
 import org.himanshu.kmp_news.ui.navigation.Graph
 import org.himanshu.kmp_news.ui.navigation.NewsRouteScreen

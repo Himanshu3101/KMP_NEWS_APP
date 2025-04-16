@@ -1,7 +1,6 @@
 package org.himanshu.kmp_news.ui.navigation.graphs
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
