@@ -21,6 +21,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -37,6 +38,7 @@ import kmp_news_app.composeapp.generated.resources.logo
 import kmp_news_app.composeapp.generated.resources.news_detail
 import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.di.koinViewModel
+import org.himanshu.kmp_news.theme.mediumPadding
 import org.himanshu.kmp_news.theme.xLargePadding
 import org.himanshu.kmp_news.utils.shareLink
 import org.jetbrains.compose.resources.painterResource
@@ -119,8 +121,9 @@ fun ArticleDetailScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
-            contentPadding = PaddingValues(xLargePadding),
-            verticalArrangement = Arrangement.spacedBy(xLargePadding)
+            contentPadding = PaddingValues(horizontal = xLargePadding),
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.spacedBy(mediumPadding)
         ) {
             item {
                 Row(

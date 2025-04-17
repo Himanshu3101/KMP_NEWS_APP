@@ -29,7 +29,7 @@ import org.himanshu.kmp_news.ui.common.ArticleListScreen
 import org.himanshu.kmp_news.ui.common.EmptyContent
 import org.himanshu.kmp_news.ui.common.ShimmerEffect
 import org.himanshu.kmp_news.ui.navigation.SettingRouteScreen
-import org.himanshu.kmp_news.utils.bottomNavigationItemList
+import org.himanshu.kmp_news.utils.navigationItemLists
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -48,7 +48,7 @@ fun BookmarkScreen(navController: NavController, paddingValues: PaddingValues){
         TopAppBar(
             title = {
                 Text(
-                    text = stringResource(bottomNavigationItemList[2].title),
+                    text = stringResource(navigationItemLists[2].title),
                     style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground

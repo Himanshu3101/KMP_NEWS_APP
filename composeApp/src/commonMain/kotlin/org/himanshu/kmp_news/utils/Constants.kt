@@ -17,7 +17,7 @@ import kmp_news_app.composeapp.generated.resources.system_default
 import org.himanshu.kmp_news.data.model.Article
 import org.himanshu.kmp_news.data.model.NewsResponse
 import org.himanshu.kmp_news.data.model.Source
-import org.himanshu.kmp_news.ui.navigation.BottomNavigationItem
+import org.himanshu.kmp_news.ui.navigation.NavigationItem
 import org.himanshu.kmp_news.ui.navigation.MainRouteScreen
 import org.jetbrains.compose.resources.StringResource
 import kotlin.random.Random
@@ -41,18 +41,18 @@ enum class Type{
     Desktop
 }
 
-val bottomNavigationItemList = listOf(
-    BottomNavigationItem(
+val navigationItemLists = listOf(
+    NavigationItem(
         icon = Res.drawable.ic_headline,
         title = Res.string.headlines,
         route = MainRouteScreen.Headlines.route
     ),
-    BottomNavigationItem(
+    NavigationItem(
         icon = Res.drawable.ic_search,
         title = Res.string.search,
         route = MainRouteScreen.Search.route
     ),
-    BottomNavigationItem(
+    NavigationItem(
         icon = Res.drawable.ic_bookmark_outlined,
         title = Res.string.bookmark,
         route = MainRouteScreen.Bookmark.route

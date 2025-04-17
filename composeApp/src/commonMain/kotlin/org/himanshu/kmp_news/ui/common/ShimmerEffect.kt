@@ -32,6 +32,7 @@ import org.himanshu.kmp_news.theme.*
 fun ShimmerEffect() {
 
     val transition = rememberInfiniteTransition()
+
     val translateAnimation by transition.animateFloat(
         initialValue = 0f,
         targetValue = 400f,
@@ -60,7 +61,7 @@ fun ShimmerEffect() {
         contentPadding = PaddingValues(mediumPadding),
         userScrollEnabled = false
     ) {
-        repeat(12) {
+        repeat(30) {
             item {
                 ArticleCardShimmerEffect(brush)
             }

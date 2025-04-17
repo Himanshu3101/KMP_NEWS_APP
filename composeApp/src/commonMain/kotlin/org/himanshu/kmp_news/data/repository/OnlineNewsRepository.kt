@@ -13,13 +13,14 @@ class OnlineNewsRepository (
 
     suspend fun getNews(category:String) : HttpResponse{
         return httpClient.get{
-            url("top-headlines")
+           /* url("top-headlines")
             parameter("category", category)
-            parameter("apiKey", BuildKonfig.API_KEY)
-
-            /*url("everything")    If, above code is not working
-            parameter("q", category)
             parameter("apiKey", BuildKonfig.API_KEY)*/
+
+            /*For showing ore item*/
+            url("everything")
+            parameter("q", category)
+            parameter("apiKey", BuildKonfig.API_KEY)
         }
     }
 

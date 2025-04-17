@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -36,7 +37,7 @@ import org.himanshu.kmp_news.ui.common.ArticleListScreen
 import org.himanshu.kmp_news.ui.common.EmptyContent
 import org.himanshu.kmp_news.ui.common.ShimmerEffect
 import org.himanshu.kmp_news.ui.navigation.SettingRouteScreen
-import org.himanshu.kmp_news.utils.bottomNavigationItemList
+import org.himanshu.kmp_news.utils.navigationItemLists
 import org.himanshu.kmp_news.utils.categoryList
 import org.jetbrains.compose.resources.stringResource
 
@@ -57,7 +58,7 @@ fun HeadlineScree(navController: NavController, paddingValues: PaddingValues) {
         TopAppBar(
             title = {
                 Text(
-                    text = stringResource(bottomNavigationItemList[0].title),
+                    text = stringResource(navigationItemLists[0].title),
                     style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground
@@ -91,7 +92,10 @@ fun HeadlineScree(navController: NavController, paddingValues: PaddingValues) {
                     },
                     label = {
                         Text(category)
-                    }
+                    },
+                    colors = FilterChipDefaults.filterChipColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainer
+                    )
                 )
             }
         }

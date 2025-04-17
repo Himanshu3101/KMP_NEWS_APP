@@ -30,12 +30,13 @@ import kmp_news_app.composeapp.generated.resources.setting
 import kmp_news_app.composeapp.generated.resources.type_to_search
 import org.himanshu.kmp_news.di.koinViewModel
 import org.himanshu.kmp_news.theme.mediumPadding
+import org.himanshu.kmp_news.theme.xSmallPadding
 import org.himanshu.kmp_news.ui.common.ArticleListScreen
 import org.himanshu.kmp_news.ui.common.EmptyContent
 import org.himanshu.kmp_news.ui.common.ShimmerEffect
 import org.himanshu.kmp_news.ui.navigation.SettingRouteScreen
 import org.himanshu.kmp_news.ui.search.component.SearchBarScreen
-import org.himanshu.kmp_news.utils.bottomNavigationItemList
+import org.himanshu.kmp_news.utils.navigationItemLists
 import org.jetbrains.compose.resources.stringResource
 
 
@@ -55,12 +56,12 @@ fun SearchScreen(navController: NavController, paddingValues: PaddingValues) {
         modifier = Modifier.fillMaxSize().padding(
             paddingValues
         ),
-        verticalArrangement = Arrangement.spacedBy(mediumPadding)
+        verticalArrangement = Arrangement.spacedBy(xSmallPadding)
     ){
         TopAppBar(
             title = {
                 Text(
-                    text = stringResource(bottomNavigationItemList[1].title),
+                    text = stringResource(navigationItemLists[1].title),
                     style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground
